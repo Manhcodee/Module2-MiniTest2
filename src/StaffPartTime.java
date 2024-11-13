@@ -1,24 +1,21 @@
 public class StaffPartTime extends Staff {
-    private double workingHours;
-    private double time = 100000;
 
-    public StaffPartTime(int ID, String name, int age, String phone, String email, double workingHours) {
-        super(ID, name, age, phone, email);
+    private double workingHours;
+    private double hourlyRate = 100000;
+
+    public StaffPartTime(int id, String name, int age, String phone, String email, double workingHours) {
+        super(id, name, age, phone, email);
         this.workingHours = workingHours;
     }
 
+    @Override
     public String toString() {
-        return "EmployeeParttime{" +
-                "id=" + getID() +
-                ", name='" + getName() + '\'' +
-                ", age=" + getAge() +
-                ", phoneNumber=" + getPhone() +
-                ", email='" + getEmail() + '\'' +
-                ", workHours=" + workingHours +
-                '}';
+        return String.format("StaffPartTime {ID: %d, Name: '%s', Age: %d, Phone: %s, Email: '%s', Work Hours: %.2f}",
+                getID(), getName(), getAge(), getPhone(), getEmail(), workingHours);
     }
 
+    @Override
     public double getSalary() {
-        return workingHours * time;
+        return workingHours * hourlyRate;
     }
 }

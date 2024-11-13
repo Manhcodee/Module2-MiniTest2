@@ -1,29 +1,24 @@
 public class StaffFullTime extends Staff {
-    private double moneyBonus;
-    private double moneyFine;
-    private double baseSalary;
 
-    public StaffFullTime(int ID, String name, int age, String phone, String email, double moneyBonus, double moneyFine, double baseSalary ){
-        super(ID, name, age, phone, email);
-        this.moneyFine = moneyFine;
-        this.moneyBonus = moneyBonus;
-        this.baseSalary = baseSalary;
+    private double bonus;
+    private double fine;
+    private double fixedSalary;
+
+    public StaffFullTime(int id, String name, int age, String phone, String email, double bonus, double fine, double fixedSalary) {
+        super(id, name, age, phone, email);
+        this.bonus = bonus;
+        this.fine = fine;
+        this.fixedSalary = fixedSalary;
     }
 
+    @Override
     public String toString() {
-        return "StaffFulltime{" +
-                "id=" + getID() +
-                ", name='" + getName() + '\'' +
-                ", age=" + getAge() +
-                ", phoneNumber=" + getPhone() +
-                ", email='" + getEmail() + '\'' +
-                ", bonus=" + moneyBonus +
-                ", fine=" + moneyFine +
-                ", fixedSalary=" + baseSalary +
-                '}';
+        return String.format("StaffFullTime {ID: %d, Name: '%s', Age: %d, Phone: %s, Email: '%s', Bonus: %.2f, Fine: %.2f, Fixed Salary: %.2f}",
+                getID(), getName(), getAge(), getPhone(), getEmail(), bonus, fine, fixedSalary);
     }
 
+    @Override
     public double getSalary() {
-        return baseSalary + (moneyBonus - moneyFine);
+        return fixedSalary + bonus - fine;
     }
 }
